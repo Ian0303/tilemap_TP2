@@ -16,11 +16,12 @@ export default class Juego extends Phaser.Scene {
 
   preload() {
     // load assets
-    this.load.tilemapTiledJSON("map", "./public/tilemaps/nivel1.json");
+    this.load.tilemapTiledJSON("map", "./public/tilemaps/nivel2.json");
     this.load.image("tilesFondo", "./public/assets/images/sky.png");
     this.load.image("tilesPlataforma", "./public/assets/images/platform.png");
 
     this.load.image("star", "./public/assets/images/star.png");
+    this.load.image("bomb", "./public/assets/images/bomb.png");
 
     this.load.spritesheet("dude", "./public/assets/images/dude.png", {
       frameWidth: 32,
@@ -116,6 +117,9 @@ export default class Juego extends Phaser.Scene {
       this.estrellas,
       this.recolectarEstrella
     );
+
+    // this.cameras.main.startFollow(this.jugador);
+    // this.cameras.main.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
   }
 
   update() {
@@ -141,6 +145,11 @@ export default class Juego extends Phaser.Scene {
     if (this.cursors.up.isDown && this.jugador.body.blocked.down) {
       this.jugador.setVelocityY(-330);
     }
+
+    // const pointer = this.scene.input.activePointer;
+    // const worldPoint = pointer.positionToCamera(this.cameras.main);
+    
+
   }
 
   recolectarEstrella(jugador, estrella) {
